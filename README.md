@@ -1,32 +1,33 @@
-# MealDB -  MCP Server
+# MealDB MCP Server
 
-🍕 **Hey Vibe Coders, ever have the problem where your partner asks you, "What do you want to eat?" and you just stare blankly? No more endless scrolling through delivery apps or decision paralysis! Let AI help you discover your next meal!** 🤖✨
+A **Model Context Protocol (MCP)** server that provides AI assistants with access to the [**TheMealDB**](https://www.themealdb.com/) API for recipe and meal information. This server enables AI assistants to search for recipes, get detailed meal information, browse categories, and explore ingredients.
 
-A **Model Context Protocol (MCP)** server that provides AI assistants with access to [**TheMealDB**](https://www.themealdb.com/) API for recipe and meal information. This server enables AI assistants to search for recipes, get detailed meal information, browse categories, and explore ingredients.
+🍕 **Hey Vibe Coders!** Ever have the problem where your partner asks you, *"What do you want to eat?"* and you just stare blankly? No more endless scrolling through delivery apps or decision paralysis! Let AI help you discover your next meal! 🤖✨
 
-🌟 **Powered by [TheMealDB](https://www.themealdb.com/)** - An open, crowd-sourced database of recipes from around the world!
+ 🌟 **Powered by [TheMealDB](https://www.themealdb.com/)** - An open, crowd-sourced database of recipes from around the world!  
+💡 *Enjoying this product? Consider reaching out to [TheMealDB team](https://www.themealdb.com/api.php) to set up a production API for enhanced features and production usecases!* 
 
 ## 🍽️ Features
 
-- **Meal Search**: Search for meals by name
-- **Meal Details**: Get complete recipe details including ingredients and instructions
-- **Random Meals**: Get random meal suggestions
-- **Category Browsing**: Explore meal categories and get meals by category
-- **Ingredient Search**: Find meals by specific ingredients
-- **Comprehensive Data**: Access to thousands of recipes from around the world
+- 🔍 **Meal Search** - Search for meals by name
+- 📋 **Meal Details** - Get complete recipe details including ingredients and instructions  
+- 🎲 **Random Meals** - Get random meal suggestions for when you're feeling adventurous
+- 📂 **Category Browsing** - Explore meal categories and discover new cuisines
+- 🥕 **Ingredient Search** - Find meals by specific ingredients you have on hand
+- 🌍 **Comprehensive Data** - Access to thousands of recipes from around the world
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+ 
-- npm or yarn
-- A compatible MCP client (like Cursor with MCP support)
-- **Docker & Docker Compose** (optional, for containerized deployment)
+- **Node.js 18+** 
+- **npm** or **yarn**
+- A compatible **MCP client** (like Cursor with MCP support)
+- **Docker & Docker Compose** *(optional, for containerized deployment)*
 
-### Local Installation (Recommended for most users)
+### 💻 Local Installation *(Recommended)*
 
-1. **Clone or download this project**
+1. **Clone this repository**
    ```bash
    git clone <your-repo-url>
    cd mealdb-mcp
@@ -49,27 +50,27 @@ A **Model Context Protocol (MCP)** server that provides AI assistants with acces
 
 The server will start and listen for MCP requests via stdio.
 
-### 🐳 Docker Installation (Optional)
+### 🐳 Docker Installation *(Optional)*
 
-For a containerized setup (requires Docker Desktop to be installed):
+For a containerized setup *(requires Docker Desktop)*:
 
-1. **Production deployment**
-   ```bash
-   npm run docker:prod
-   ```
+**Production deployment:**
+```bash
+npm run docker:prod
+```
 
-2. **Development with hot reload**
-   ```bash
-   npm run docker:dev
-   ```
+**Development with hot reload:**
+```bash
+npm run docker:dev
+```
 
-**Note:** If you get a "'docker-compose' is not recognized" error, Docker isn't installed. Use the local installation method above instead.
+> ⚠️ **Note:** If you get a *"'docker-compose' is not recognized"* error, Docker isn't installed. Use the local installation method above instead.
 
-## 🔧 Configuration
+## ⚙️ Configuration
 
 ### For Cursor IDE
 
-The server includes a `.cursor/mcp.json` configuration file that allows Cursor to automatically discover and use the MealDB server.
+The server includes a `.cursor/mcp.json` configuration file that allows Cursor to automatically discover and use the MealDB server:
 
 ```json
 {
@@ -88,19 +89,17 @@ The server includes a `.cursor/mcp.json` configuration file that allows Cursor t
 ### For Other MCP Clients
 
 Configure your MCP client to connect to this server using:
-- **Command**: `node`
-- **Arguments**: `["path/to/mealdb-mcp/build/index.js"]`
-- **Working Directory**: `path/to/mealdb-mcp`
+- **Command:** `node`
+- **Arguments:** `["path/to/mealdb-mcp/build/index.js"]`
+- **Working Directory:** `path/to/mealdb-mcp`
 
 ## 🛠️ Available Tools
 
-The MealDB MCP server provides the following tools:
-
-### 1. `search_meals`
+### 🔍 `search_meals`
 Search for meals by name.
 
 **Parameters:**
-- `query` (string): Name of the meal to search for
+- `query` *(string)*: Name of the meal to search for
 
 **Example:**
 ```json
@@ -112,11 +111,11 @@ Search for meals by name.
 }
 ```
 
-### 2. `get_meal_details`
+### 📋 `get_meal_details`
 Get detailed information about a specific meal by ID.
 
 **Parameters:**
-- `mealId` (string): The ID of the meal to get details for
+- `mealId` *(string)*: The ID of the meal to get details for
 
 **Example:**
 ```json
@@ -128,10 +127,10 @@ Get detailed information about a specific meal by ID.
 }
 ```
 
-### 3. `get_random_meal`
+### 🎲 `get_random_meal`
 Get a random meal suggestion.
 
-**Parameters:** None
+**Parameters:** *None*
 
 **Example:**
 ```json
@@ -141,10 +140,10 @@ Get a random meal suggestion.
 }
 ```
 
-### 4. `list_categories`
+### 📂 `list_categories`
 Get all available meal categories.
 
-**Parameters:** None
+**Parameters:** *None*
 
 **Example:**
 ```json
@@ -154,11 +153,11 @@ Get all available meal categories.
 }
 ```
 
-### 5. `search_by_ingredient`
+### 🥕 `search_by_ingredient`
 Find meals that contain a specific ingredient.
 
 **Parameters:**
-- `ingredient` (string): Name of the ingredient to search for
+- `ingredient` *(string)*: Name of the ingredient to search for
 
 **Example:**
 ```json
@@ -198,13 +197,13 @@ mealdb-mcp/
 └── README.md           # This file
 ```
 
-### Scripts
+### Available Scripts
 
 **Local Development:**
 - `npm run build` - Compile TypeScript to JavaScript
 - `npm run watch` - Watch for changes and recompile
 - `npm start` - Start the MCP server
-- `npm run prepare` - Build the project (runs automatically on install)
+- `npm run prepare` - Build the project *(runs automatically on install)*
 
 **Docker Commands:**
 - `npm run docker:build` - Build Docker image
@@ -217,25 +216,26 @@ mealdb-mcp/
 
 ### API Information
 
-This server uses the free tier of [TheMealDB API](https://www.themealdb.com/api.php) which provides:
-- Meal search by name
-- Meal details by ID
-- Random meal suggestions
-- Category listings
-- Ingredient-based filtering
-- Area/cuisine filtering
+This server uses the **free tier** of [TheMealDB API](https://www.themealdb.com/api.php) which provides:
 
-**Note**: This server only uses free API endpoints. Premium features are not implemented.
+- ✅ Meal search by name
+- ✅ Meal details by ID
+- ✅ Random meal suggestions
+- ✅ Category listings
+- ✅ Ingredient-based filtering
+- ✅ Area/cuisine filtering
+
+> **Note:** This server only uses free API endpoints. Premium features are not implemented.
 
 ## 🐳 Docker Deployment
 
 ### Container Features
 
-- **Multi-stage build** for optimized production images
-- **Non-root user** for enhanced security
-- **Health checks** for container monitoring
-- **Alpine Linux** base for minimal image size
-- **Development mode** with hot reload support
+- 🏗️ **Multi-stage build** for optimized production images
+- 🔒 **Non-root user** for enhanced security
+- 💓 **Health checks** for container monitoring
+- 🏔️ **Alpine Linux** base for minimal image size
+- 🔄 **Development mode** with hot reload support
 
 ### Production Deployment
 
@@ -260,16 +260,6 @@ docker-compose -f docker-compose.dev.yml up
 npm run docker:dev
 ```
 
-### Container Configuration
-
-The Docker setup includes:
-
-- **Production container**: Optimized, multi-stage build
-- **Development container**: Hot reload, volume mounting
-- **Health checks**: Automatic container health monitoring
-- **Network isolation**: Dedicated Docker networks
-- **Volume management**: Persistent data and logs
-
 ### Environment Variables
 
 Configure the container using environment variables:
@@ -279,40 +269,20 @@ NODE_ENV=production          # Environment mode
 PORT=3000                   # Server port
 ```
 
-### Docker Commands Reference
-
-```bash
-# Build image manually
-docker build -t mealdb-mcp-server .
-
-# Run container manually
-docker run -p 3000:3000 mealdb-mcp-server
-
-# Execute commands in running container
-docker exec -it mealdb-mcp-server /bin/sh
-
-# View container logs
-docker logs mealdb-mcp-server
-
-# Stop and remove container
-docker stop mealdb-mcp-server
-docker rm mealdb-mcp-server
-```
-
 ## 🔒 Security
 
-- The server runs locally and doesn't expose any network ports
-- All API calls are made to the public TheMealDB API
-- No sensitive data is stored or transmitted
-- Uses secure HTTPS connections to external APIs
+- 🏠 The server runs locally and doesn't expose any network ports
+- 🌐 All API calls are made to the public TheMealDB API
+- 🔐 No sensitive data is stored or transmitted
+- 🔗 Uses secure HTTPS connections to external APIs
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+1. 🍴 Fork the repository
+2. 🌿 Create a feature branch
+3. ✏️ Make your changes
+4. 🧪 Test thoroughly
+5. 📤 Submit a pull request
 
 ## 📄 License
 
@@ -342,23 +312,23 @@ We're here to help you get the most out of your MealDB MCP Server! If you encoun
 
 ### Common Issues & Solutions
 
-**"'docker-compose' is not recognized" Error:**
+**🚨 "'docker-compose' is not recognized" Error:**
 
 If you see this error when running `npm run docker:prod`, it means Docker isn't installed on your system. You have two options:
 
-1. **Install Docker Desktop** (recommended for containerized deployment):
+1. **Install Docker Desktop** *(recommended for containerized deployment)*:
    - Download from https://www.docker.com/products/docker-desktop/
    - Install and restart your computer
    - Verify with `docker --version` and `docker compose version`
 
-2. **Run locally without Docker** (simpler setup):
+2. **Run locally without Docker** *(simpler setup)*:
    ```bash
    npm install
    npm run build
    npm start
    ```
 
-**Build or Runtime Issues:**
+**🔧 Build or Runtime Issues:**
 
 1. ✅ Check that Node.js 18+ is installed (`node --version`)
 2. ✅ Ensure all dependencies are installed (`npm install`)
