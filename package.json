@@ -1,0 +1,39 @@
+{
+  "name": "mealdb-mcp-server",
+  "version": "1.0.0",
+  "description": "A Model Context Protocol server for TheMealDB API - search recipes, get meal details, browse categories, and explore ingredients",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "mealdb-server": "build/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "start": "node build/index.js",
+    "docker:build": "docker build -t mealdb-mcp-server .",
+    "docker:run": "docker run -p 3000:3000 mealdb-mcp-server",
+    "docker:dev": "docker-compose -f docker-compose.dev.yml up --build",
+    "docker:prod": "docker-compose up -d --build",
+    "docker:stop": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:clean": "docker-compose down -v --remove-orphans && docker system prune -f"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.15.0",
+    "dotenv": "^16.4.7",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.5",
+    "typescript": "^5.8.3"
+  },
+  "main": "build/index.js",
+  "keywords": ["mcp", "model-context-protocol", "mealdb", "recipes", "cooking", "food", "api"],
+  "author": "Your Name",
+  "license": "MIT"
+}

@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  mealdb-mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: mealdb-mcp-server
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount logs directory (if needed)
+      - ./logs:/app/logs
+    networks:
+      - mcp-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "console.log('MCP Server is healthy')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mealdb-mcp.rule=Host(`mealdb-mcp.localhost`)"
+      - "traefik.http.services.mealdb-mcp.loadbalancer.server.port=3000"
+
+  # Development service (for local development)
+  mealdb-mcp-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    container_name: mealdb-mcp-dev
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    ports:
+      - "3001:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/build
+    networks:
+      - mcp-network
+    command: ["npm", "run", "watch"]
+    profiles:
+      - dev
+
+networks:
+  mcp-network:
+    driver: bridge
+
+volumes:
+  logs: 

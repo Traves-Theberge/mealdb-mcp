@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  mealdb-mcp-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    container_name: mealdb-mcp-dev
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    volumes:
+      # Bind mount source code for hot reloading
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - ./tsconfig.json:/app/tsconfig.json
+      # Exclude node_modules and build from bind mount
+      - /app/node_modules
+      - /app/build
+    networks:
+      - mcp-dev-network
+    command: ["npm", "run", "watch"]
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+  # Optional: Add a development database if needed
+  # postgres:
+  #   image: postgres:15-alpine
+  #   container_name: mealdb-postgres-dev
+  #   environment:
+  #     POSTGRES_USER: mcp_user
+  #     POSTGRES_PASSWORD: mcp_password
+  #     POSTGRES_DB: mealdb_mcp
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   networks:
+  #     - mcp-dev-network
+
+networks:
+  mcp-dev-network:
+    driver: bridge
+
+# volumes:
+#   postgres_data: 
