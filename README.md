@@ -1,4 +1,4 @@
-# MealDB MCP Server
+# MealDB -  MCP Server
 
 🍕 **Hey Vibe Coders, ever have the problem where your partner asks you, "What do you want to eat?" and you just stare blankly? No more endless scrolling through delivery apps or decision paralysis! Let AI help you discover your next meal!** 🤖✨
 
@@ -373,4 +373,4 @@ If you see this error when running `npm run docker:prod`, it means Docker isn't 
 
 **Happy Cooking! 🍳**
 
-**Made with 
+**Made with ❤️ by Traves Theberge**
